@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戦略的メンタルヘルスマネジメント実践ガイド</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #06b6d4;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #f1f5f9;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            padding: 4rem 2rem 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(79, 70, 229, 0.9) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            padding: 0 1rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-card {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .table-of-contents {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .toc-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .toc-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 0.75rem;
+        }
+
+        .toc-title {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .content-area {
+            padding: 3rem;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, var(--bg-secondary), white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 100px;
+        }
+
+        .chapter-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .chapter-number {
+            font-size: 0.875rem;
+            font-weight: 500;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 1px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 1px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .diagram {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Inter', monospace;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .checklist {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h4 {
+            color: #15803d;
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 1rem 4rem;
+            }
+
+            .main-container {
+                margin-top: -2rem;
+                padding: 0 0.5rem 2rem;
+            }
+
+            .content-area {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-container {
+                padding: 1.5rem;
+            }
+
+            .table-of-contents {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-header {
+                padding: 1.5rem;
+            }
+
+            .chapter-title {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* スムーススクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ローディングアニメーション */
+        .loading-animation {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <section class="hero-section">
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title">戦略的メンタルヘルス<br>マネジメント実践ガイド</h1>
+            <p class="hero-subtitle">企業の競争力を高めるための理論と実践</p>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <div class="content-card">
+            <nav class="nav-container">
+                <h2 class="nav-title">📋 目次</h2>
+                <div class="table-of-contents">
+                    <div class="toc-item" onclick="scrollToSection('intro')">
+                        <span class="toc-number">📖</span>
+                        <span class="toc-title">はじめに</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter1')">
+                        <span class="toc-number">1</span>
+                        <span class="toc-title">経営戦略的意義</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter2')">
+                        <span class="toc-number">2</span>
+                        <span class="toc-title">4つのケアの実践</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter3')">
+                        <span class="toc-number">3</span>
+                        <span class="toc-title">ストレスチェック活用</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter4')">
+                        <span class="toc-number">4</span>
+                        <span class="toc-title">心理的安全性の醸成</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter5')">
+                        <span class="toc-number">5</span>
+                        <span class="toc-title">復職支援プログラム</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter6')">
+                        <span class="toc-number">6</span>
+                        <span class="toc-title">投資対効果の可視化</span>
+                    </div>
+                    <div class="toc-item" onclick="scrollToSection('chapter7')">
+                        <span class="toc-number">7</span>
+                        <span class="toc-title">最新動向と未来展望</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content-area">
+                <section id="intro" class="section intro-section fade-in-up">
+                    <h2>📍 はじめに</h2>
+                    <p>本レポートは、企業の経営層、人事労務担当者、そして日々現場を率いる管理職の方々を対象に、現代企業における最重要課題の一つである「メンタルヘルスマネジメント」を、単なる福利厚生やリスク管理の枠を超え、<strong>企業の持続的成長を支える「攻めの経営戦略」</strong>として捉え直し、実践するための具体的な理論と手法を提示することを目的とする。</p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">60%</span>
+                            <div class="stat-label">業務上の強いストレスを感じる労働者</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">過去最高</span>
+                            <div class="stat-label">精神障害による労災認定件数</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">構造的課題</span>
+                            <div class="stat-label">一過性ではない深刻な問題</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>重要なパラダイムシフト:</strong> もはや、メンタルヘルス対策を「何か問題が起きてから対応する」という守りの姿勢で捉える時代は終わった。これからの時代に求められるのは、従業員一人ひとりが心身ともに健康で、その能力と創造性を最大限に発揮できるような職場環境(心理的安全性)を積極的に構築し、それを組織の競争力へと転換していく<strong>「攻めのメンタルヘルスマネジメント」</strong>である。</p>
+                    </div>
+                </section>
+
+                <section id="chapter1" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第1章</div>
+                        <div class="chapter-title">メンタルヘルスマネジメントの経営戦略的意義</div>
+                    </div>
+
+                    <h3>1-1. 用語の定義と目的の再確認</h3>
+                    <div class="info-card">
+                        <p><strong>メンタルヘルスマネジメント</strong>とは、企業が経営的な視点に基づき、従業員の心の健康の保持増進を戦略的に支援し、組織全体の活性化と生産性の向上を目指す、体系的かつ継続的な取り組みの総称である。</p>
+                    </div>
+
+                    <p>これは、個人の努力に依存する「セルフケア」とは一線を画し、企業が主体となり、職場環境や働き方、組織文化そのものに働きかける点に本質がある。その目的は、単に不調者を減らすこと(ゼロマイナス)に留まらない。全従業員が精神的に満たされ、いきいきと働ける状態(プラス)を創出し、個人の成長と組織の成長の好循環を生み出すことにある。</p>
+
+                    <h3>1-2. 関連法規と企業の法的責任</h3>
+                    <div class="warning-card">
+                        <p><strong>⚠️ 重要な法的義務</strong></p>
+                        <p>企業のメンタルヘルス対策は、倫理的要請であると同時に、法律によって厳格に定められた法的義務である。経営層、管理職はこの責任の重さを正確に理解する必要がある。</p>
+                    </div>
+
+                    <ul>
+                        <li><strong>安全配慮義務(労働契約法第5条):</strong> 企業は、従業員がその生命、身体等の安全を確保しつつ労働することができるよう、必要な配慮をする義務を負う。これは物理的な安全だけでなく、精神的な健康も当然に含まれる。</li>
+                        <li><strong>労働安全衛生法:</strong> ストレスチェック制度の実施義務(第66条の10)は最も有名だが、それ以外にも、産業医の選任(第13条)、衛生委員会の設置(第18条)、長時間労働者への医師による面接指導(第66条の8)など、メンタルヘルスに関わる多角的な義務を定めている。</li>
+                        <li><strong>労働基準法:</strong> 時間外労働の上限規制や、解雇権の濫用(精神不調を理由とした不当な解雇など)の禁止は、従業員の過度な負担を防ぐためのセーフティネットとして機能する。</li>
+                    </ul>
+
+                    <h3>1-3. メンタルヘルス不調の予防モデル</h3>
+                    <div class="diagram">
+<h4>🔄 3段階の予防モデル</h4>
+
+【一次予防：未然防止】(全従業員対象)
+↓ ストレスの原因そのものを減らす
+↓ ストレスへの耐性を高める
+
+【二次予防：早期発見・早期対応】(不調の兆候がある従業員対象)
+↓ 不調者を早期に発見し、悪化を防ぐ
+↓ 専門家へ迅速に繋ぐ
+
+【三次予防：職場復帰支援・再発防止】(休職者・復職者対象)
+↓ 円滑な職場復帰を支援し、再発を防ぐ
+↓ 受け入れ体制を整備する
+                    </div>
+
+                    <h4>一次予防(未然防止) - 最重要！</h4>
+                    <p>最も重要かつ投資対効果が高い段階。目的は、ストレスの原因となる職場環境の問題(ストレス源)を特定し、除去・改善すること。</p>
+                    <ul>
+                        <li>ストレスチェックの集団分析に基づく職場環境改善ワークショップの実施</li>
+                        <li>長時間労働の是正、勤務間インターバル制度の導入</li>
+                        <li>ハラスメント防止研修の徹底、相談窓口の実効性確保</li>
+                        <li>コミュニケーション活性化のための1on1ミーティングの制度化</li>
+                        <li>従業員のストレス対処能力を高めるための研修(レジリエンス研修など)</li>
+                    </ul>
+
+                    <h3>1-4. 経営視点から見たメリット</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">📈</span>
+                            <div class="stat-label"><strong>生産性向上</strong><br>プレゼンティーズムの改善</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">👥</span>
+                            <div class="stat-label"><strong>人材定着</strong><br>採用競争力の強化</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">💎</span>
+                            <div class="stat-label"><strong>企業価値向上</strong><br>ESG経営の実践</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>投資効果の実態:</strong> 「プレゼンティーズム」とは、出勤はしているものの、心身の不調が原因で本来のパフォーマンスを発揮できない状態を指す。欠勤(アブセンティーズム)による損失よりも、このプレゼンティーズムによる見えない生産性損失の方が遥かに大きいとされる。</p>
+                    </div>
+                </section>
+
+                <section id="chapter2" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第2章</div>
+                        <div class="chapter-title">「4つのケア」の構造的理解と実践的深化</div>
+                    </div>
+
+                    <h3>2-1. 「4つのケア」が連携するエコシステムの全体像</h3>
+                    <div class="info-card">
+                        <p>厚生労働省が示す「4つのケア」は、それぞれが独立したパーツではなく、<strong>組織内に多重的なセーフティネットを張り巡らせるための、相互に連携した一つの「エコシステム(生態系)」</strong>として理解する必要がある。</p>
+                    </div>
+
+                    <div class="diagram">
+<h4>🌐 4つのケアの連携エコシステム</h4>
+
+    ┌─────────────────────────────────┐
+    │    事業場外資源によるケア（専門性・匿名性）        │
+    │       （EAP、医療機関、地域保健センター等）       │
+    └─────────────┬───────────────┘
+                        ↕
+    ┌─────────────────┬─────────────────┐
+    │  事業場内産業保健スタッフ   │    ラインによるケア      │
+    │     によるケア          │     （管理監督者）      │
+    │ （制度設計・企画・専門的支援）│ （日常の気づき・相談対応）│
+    └─────────────────┼─────────────────┘
+                        ↕
+                ┌─────────────────┐
+                │      セルフケア        │
+                │     （従業員本人）      │
+                └─────────────────┘
+                    </div>
+
+                    <h3>2-2. セルフケア支援の具体策</h3>
+                    <p>従業員に「セルフケアをしなさい」と丸投げするだけでは不十分である。企業は、従業員がセルフケアを<strong>「実行できる」ための具体的な知識とツール、そして安心して利用できる環境</strong>を提供しなければならない。</p>
+
+                    <h4>💡 知識(リテラシー)の提供</h4>
+                    <ul>
+                        <li><strong>ストレス対処法(コーピング) 研修:</strong> 「問題焦点型コーピング」「情動焦点型コーピング」など、多様な対処法のレパートリーを教える。</li>
+                        <li><strong>睡眠・食事・運動に関するセミナー:</strong> 専門家を招き、メンタルヘルスに直結する生活習慣の重要性を学ぶ機会を提供する。</li>
+                        <li><strong>金融リテラシー研修:</strong> 経済的な不安は大きなストレス源となるため、資産形成などに関する情報提供も有効。</li>
+                    </ul>
+
+                    <h4>🛠️ ツールとリソースの提供</h4>
+                    <ul>
+                        <li><strong>メンタルヘルスアプリの法人契約:</strong> 気分の記録、マインドフルネス瞑想、認知行動療法(CBT)などを手軽に実践できるアプリを提供する。</li>
+                        <li><strong>社内イントラネット上の「心の健康ライブラリ」:</strong> ストレスに関する知識、相談窓口の連絡先、セルフチェックツールなどをいつでもアクセスできる場所に常設する。</li>
+                        <li><strong>相談窓口の徹底周知:</strong> 「何かあってから調べる」のではなく、「知っているのが当たり前」の状態を作る。</li>
+                    </ul>
+
+                    <h3>2-3. ラインケアの壁と突破口（最重要項目）</h3>
+                    <div class="warning-card">
+                        <p><strong>🎯 ラインケアは成否を分ける要諦</strong></p>
+                        <p>ラインケアは、メンタルヘルス対策の最前線であり、成否を分ける要諦である。しかし、多くの管理職が困難を感じているのも事実だ。</p>
+                    </div>
+
+                    <h4>⚠️ 管理職が陥る「5つの罠」</h4>
+                    <ol>
+                        <li><strong>「パフォーマンス追求 vs 部下への配慮」のジレンマ</strong></li>
+                        <li><strong>「法的リスクへの恐怖」</strong></li>
+                        <li><strong>「スキル・ノウハウ不足」</strong></li>
+                        <li><strong>「感情的巻き込まれと燃え尽き」</strong></li>
+                        <li><strong>「プライバシー尊重の誤解」</strong></li>
+                    </ol>
+
+                    <h4>🚀 壁を突破する実践的アプローチ</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>状況</th>
+                                <th>❌ やってはいけない声かけ</th>
+                                <th>✅ 安全で効果的な声かけ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>遅刻やミスが増えている</td>
+                                <td>「最近たるんでるんじゃないか？」<br>「しっかりしろよ」</td>
+                                <td>「最近、少し疲れているように見えるけど、何か困っていることはないかな？もしよければ少し話を聞くよ」</td>
+                            </tr>
+                            <tr>
+                                <td>元気がなく孤立している</td>
+                                <td>「そんな暗い顔するなよ」<br>「もっと元気出せ」</td>
+                                <td>「〇〇さん、最近あまり話せていないけど、変わりないかな？ちょっと心配しているんだ。もし何かあれば、いつでも声をかけてほしい」</td>
+                            </tr>
+                            <tr>
+                                <td>本人から相談を持ちかけられた</td>
+                                <td>「要するに何が言いたいの？」<br>「君の考えは甘いよ」</td>
+                                <td>「話してくれてありがとう。大変だったね。すぐに解決策は出せないかもしれないけど、一緒に考えていきたい」</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="checklist">
+                        <h4>【チェックリスト】 EAPサービス選定基準</h4>
+                        <ul>
+                            <li>☑️ <strong>相談員の専門性:</strong> 臨床心理士、公認心理師、精神保健福祉士などの有資格者が多数在籍しているか。</li>
+                            <li>☑️ <strong>アクセスの容易さ:</strong> 電話、オンライン、対面など、多様な相談チャネルが用意されているか。24時間365日対応か。</li>
+                            <li>☑️ <strong>サービス範囲:</strong> 本人だけでなく、その家族も利用できるか。カウンセリング以外のサービス(法律相談、金銭問題相談など)も提供しているか。</li>
+                            <li>☑️ <strong>企業への支援体制:</strong> 研修講師の派遣、ストレスチェックの実施・分析、管理職からのコンサルテーションなど、組織全体への支援メニューは充実しているか。</li>
+                            <li>☑️ <strong>レポーティング能力:</strong> 個人情報を保護した上で、組織のストレス傾向や利用状況などを定期的に分析し、具体的な改善提案を報告してくれるか。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="chapter3" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第3章</div>
+                        <div class="chapter-title">ストレスチェック制度の形骸化防止と戦略的活用</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💡 パラダイムシフト:</strong> ストレスチェック制度は「年に一度の義務」ではなく、<strong>組織全体の健康状態を可視化し、データに基づいて職場環境を科学的に改善するための「経営ツール」</strong>として活用すべきです。</p>
+                    </div>
+
+                    <h3>3-1. 制度の概要と見落とされがちな法的留意点</h3>
+                    <div class="warning-card">
+                        <p><strong>⚖️ 重要な法的ポイント</strong></p>
+                        <ul>
+                            <li><strong>職場環境改善の努力義務:</strong> 集団分析の結果に基づく適切な措置の実施</li>
+                            <li><strong>不利益な取扱いの禁止:</strong> 結果を理由とした解雇、異動、降格等の禁止</li>
+                            <li><strong>厳格な守秘義務:</strong> 違反した場合の刑事罰の可能性</li>
+                        </ul>
+                    </div>
+
+                    <h3>3-2. 集団分析の徹底活用法</h3>
+                    <div class="diagram">
+<h4>📊 仕事のストレス判定図の4象限</h4>
+
+支援・コントロール度（緩衝要因）が高い
+    ↑
+    │ 【象限②：活気はあるが疲弊リスク】 │ 【象限④：理想的な状態】
+    │ 仕事の負担は大きいが、裁量権や   │ 仕事の負担は適度で、裁量権や
+    │ 支援があるため、やりがいを感じる  │ 支援もあり、最も健康度が高い
+    │ しかし長期的には燃え尽きリスクも  │
+────┼──────────────────┼────► ストレス要因（負担）が低い
+    │ 【象限①：最もリスクが高い状態】   │ 【象限③：受け身的で意欲低下】
+    │ 仕事の負担が大きく、裁量権や     │ 仕事の負担は少ないが、裁量権や
+    │ 支援もないため、心身の不調       │ 支援もなく、仕事への意欲が低下
+    │ リスクが極めて高い              │
+    ↓
+支援・コントロール度が低い
+                    </div>
+
+                    <h4>🎯 活用のポイント</h4>
+                    <ul>
+                        <li><strong>部署間比較:</strong> どの部署がどの象限に位置するかを客観的に把握</li>
+                        <li><strong>経年変化の追跡:</strong> 施策の効果測定や新たな問題の早期発見</li>
+                        <li><strong>他データとのクロス分析:</strong> 時間外労働時間、有給休暇取得率、エンゲージメントサーベイの結果との関連性を分析</li>
+                    </ul>
+
+                    <h3>3-3. 職場環境改善ワークショップの実践マニュアル</h3>
+                    <div class="info-card">
+                        <h4>🗓️ ワークショップ当日のアジェンダ例（約2時間）</h4>
+                        <ol>
+                            <li><strong>イントロダクション（10分）:</strong> 目的の共有とグラウンドルール設定</li>
+                            <li><strong>データ共有と現状認識（20分）:</strong> 集団分析結果の可視化と共有</li>
+                            <li><strong>課題の深掘り（30分）:</strong> ブレインストーミングによる問題点の洗い出し</li>
+                            <li><strong>解決策のアイデア出し（30分）:</strong> 自分たちでできることの検討</li>
+                            <li><strong>アクションプランの策定（30分）:</strong> 具体的な実行計画の作成</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="chapter4" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第4章</div>
+                        <div class="chapter-title">心理的安全性の醸成と組織文化改革</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🎯 究極的な目標:</strong> メンタルヘルスマネジメントの究極的な目標は、不調者を生まない組織、すなわち<strong>「心理的安全性の高い組織」</strong>を創り上げることにある。心理的安全性は、従業員の心の健康を守る土台であると同時に、イノベーションと生産性を向上させるための必須条件である。</p>
+                    </div>
+
+                    <h3>4-1. 心理的安全性の理論的背景</h3>
+                    <div class="info-card">
+                        <p><strong>定義:</strong> ハーバード大学のエイミー・エドモンドソン教授によって提唱された心理的安全性とは、<strong>「このチームの中では、対人関係のリスク（無知だと思われる、無能だと思われる等）を恐れることなく、安心して自分の考えや気持ちを表明できるという、チームメンバーによって共有された信念」</strong>を指す。</p>
+                    </div>
+
+                    <h3>4-2. 日本組織における心理的安全性のよくある誤解</h3>
+                    <div class="diagram">
+<h4>🎭 心理的安全性とアカウンタビリティの4象限</h4>
+
+                    アカウンタビリティ（基準）が高い
+                                ↑
+心理的安全性が高い ←─┼─────────┼─────────┼─→ 心理的安全性が低い
+                    │  ラーニングゾーン  │   アングザイエティ  │
+                    │ ハイパフォーマンス  │    ゾーン（不安）   │
+                    │─────────┼─────────│
+                    │  コンフォートゾーン │   アパシーゾーン   │
+                    │   （ぬるま湯）    │    （無気力）     │
+                                ↓
+                    アカウンタビリティ（基準）が低い
+                    </div>
+
+                    <div class="warning-card">
+                        <p><strong>⚠️ 重要な誤解の解消</strong></p>
+                        <p>心理的安全性は「ぬるま湯」や「和の精神」ではありません。私たちが目指すべきは、互いに高い基準を求めつつも、失敗を恐れず挑戦し、学び合える<strong>「ラーニングゾーン」</strong>です。</p>
+                    </div>
+
+                    <h3>4-3. 組織の心理的安全性を測定・可視化する手法</h3>
+                    <div class="checklist">
+                        <h4>📋 心理的安全性測定サーベイ（7項目）</h4>
+                        <ol>
+                            <li>このチームの中でミスをすると、たいてい非難される。（逆質問）</li>
+                            <li>このチームのメンバーは、課題や難しい問題を指摘し合える。</li>
+                            <li>このチームのメンバーは、「人と違う」ということを理由に他者を拒絶することがある。（逆質問）</li>
+                            <li>このチームに対してリスクのある行動（新しいアイデアの提案など）をしても安全だと感じる。</li>
+                            <li>このチームの他のメンバーに助けを求めることは難しい。（逆質問）</li>
+                            <li>このチームの誰も、私の仕事を意図的におとしめるような行動はしない。</li>
+                            <li>このチームのメンバーと働く時、自分のスキルと才能が尊重され、活かされていると感じる。</li>
+                        </ol>
+                    </div>
+
+                    <h3>4-4. 醸成のための階層別アクションプラン</h3>
+                    
+                    <h4>🎯 経営層が実践すべきこと</h4>
+                    <ul>
+                        <li><strong>自らの弱さと失敗を開示する:</strong> トップが完璧でないことを示す</li>
+                        <li><strong>挑戦を称賛し、結果だけでなくプロセスを評価する</strong></li>
+                        <li><strong>「なぜ？」ではなく「どうしたら？」と問う:</strong> 犯人探しではなく未来志向の問いかけ</li>
+                    </ul>
+
+                    <h4>👥 管理職がチームで実践すべき7つの行動</h4>
+                    <ol>
+                        <li><strong>議論のフレームを作る:</strong> 会議冒頭で反対意見も歓迎すると宣言</li>
+                        <li><strong>意図的に発言を求める:</strong> 普段発言しないメンバーにも話を振る</li>
+                        <li><strong>無知をさらけ出す:</strong> 知らないことを素直に認める</li>
+                        <li><strong>感謝と承認を言葉にする:</strong> あらゆる発言を肯定的に受け止める</li>
+                        <li><strong>失敗を再定義する:</strong> 学習機会として捉え直す</li>
+                        <li><strong>対話の時間を確保する:</strong> 価値観やキャリア観にも関心を持つ</li>
+                        <li><strong>発言と行動を一致させる:</strong> 一貫した実践を継続</li>
+                    </ol>
+                </section>
+
+                <section id="chapter5" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第5章</div>
+                        <div class="chapter-title">休職・復職支援（リワーク）プログラムの高度化</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🎯 復職支援の戦略的価値:</strong> 適切な復職支援は、貴重な人材の喪失を防ぎ、他の従業員に「この会社は、いざという時に自分を守ってくれる」という強い安心感と信頼感を与える組織文化の醸成に寄与します。</p>
+                    </div>
+
+                    <h3>5-1. 復職支援が組織に与える長期的インパクト</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">💰</span>
+                            <div class="stat-label"><strong>人材投資の回収</strong><br>採用・育成コストの保護</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">🛡️</span>
+                            <div class="stat-label"><strong>心理的安全性向上</strong><br>組織文化の強化</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">⚖️</span>
+                            <div class="stat-label"><strong>リスクマネジメント</strong><br>法的リスクの低減</div>
+                        </div>
+                    </div>
+
+                    <h3>5-2. 成功率を高める復職支援の5ステップ</h3>
+                    <div class="diagram">
+<h4>🛣️ 復職支援の5ステップ・ロードマップ</h4>
+
+【Step 1: 休職開始時】 
+    ↓ 安心感の醸成・事務手続き
+【Step 2: 休職中】 
+    ↓ 適切な距離感でのケア・情報連携
+【Step 3: 復職可否の判断】 
+    ↓ 主治医・産業医の連携による慎重な判断
+【Step 4: 職場復帰】 
+    ↓ 段階的復帰プラン・リハビリ出勤
+【Step 5: 復帰後のフォローアップ】 
+    ↓ 継続的支援・再発防止策
+                    </div>
+
+                    <h4>📅 Step 4: 職場復帰プランの具体例</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>期間</th>
+                                <th>勤務時間</th>
+                                <th>業務内容</th>
+                                <th>配慮事項</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>第1週</td>
+                                <td>週3日、午前中のみ（9時～12時）</td>
+                                <td>業務は行わず、自席で読書や軽作業</td>
+                                <td>職場環境への慣れを重視</td>
+                            </tr>
+                            <tr>
+                                <td>第2週</td>
+                                <td>週5日、午前中のみ</td>
+                                <td>簡単な定型業務を開始</td>
+                                <td>負荷を最小限に</td>
+                            </tr>
+                            <tr>
+                                <td>第3週</td>
+                                <td>週5日、15時まで勤務</td>
+                                <td>業務の幅を少し広げる</td>
+                                <td>徐々に責任を増やす</td>
+                            </tr>
+                            <tr>
+                                <td>第4週</td>
+                                <td>週5日、定時まで勤務</td>
+                                <td>通常業務に近づける</td>
+                                <td>残業は禁止</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="checklist">
+                        <h4>📋 受け入れ部署のための準備リスト</h4>
+                        <ul>
+                            <li>☑️ <strong>事前ミーティングの実施:</strong> 必要な配慮事項の事前説明</li>
+                            <li>☑️ <strong>役割分担の明確化:</strong> 復職直後の業務サポート役（メンター）を決定</li>
+                            <li>☑️ <strong>周囲の過剰な配慮への注意喚起:</strong> 「腫れ物に触る」態度の回避</li>
+                            <li>☑️ <strong>歓迎の意を示す:</strong> 復職初日の適切な歓迎メッセージ</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="chapter6" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第6章</div>
+                        <div class="chapter-title">メンタルヘルス投資対効果（ROI）の可視化と経営層への説明責任</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💡 投資としての視点:</strong> メンタルヘルス対策を持続可能なものにするためには、それを「コスト」ではなく「投資」として位置づけ、そのリターン（ROI: Return on Investment）を可能な限り可視化し、経営層に対して説明責任を果たしていく必要がある。</p>
+                    </div>
+
+                    <h3>6-1. なぜROIの可視化が不可欠なのか</h3>
+                    <div class="info-card">
+                        <p><strong>📊 数字で語る重要性:</strong> 経営の意思決定は、最終的に数字に基づいて行われる。「この投資が、どれだけの経営的インパクトをもたらすのか」を客観的なデータで示すことが、取り組みを推進するための強力なエンジンとなる。</p>
+                    </div>
+
+                    <h3>6-2. 測定すべき重要業績評価指標（KPI）</h3>
+                    
+                    <h4>📈 ① アブセンティーズム（疾病休業）コストの算出</h4>
+                    <div class="diagram">
+算出式:
+（休職者の平均賃金日額） × （年間合計休職日数） 
+＋ （休職期間中の社会保険料の会社負担分） 
+＋ （代替要員の採用・人件費）
+                    </div>
+
+                    <h4>📊 ② プレゼンティーズム（生産性損失）の測定</h4>
+                    <ul>
+                        <li><strong>測定ツール例:</strong> WHO-HPQ (Health and Work Performance Questionnaire)</li>
+                        <li><strong>算出方法:</strong> （全従業員の総人件費） × （プレゼンティーズム損失率）</li>
+                    </ul>
+
+                    <h4>📋 ③ その他の定量的・定性的KPI</h4>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">👥</span>
+                            <div class="stat-label"><strong>人材定着率</strong><br>離職率の変化</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">⏰</span>
+                            <div class="stat-label"><strong>時間外労働</strong><br>部門別平均の変化</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">❤️</span>
+                            <div class="stat-label"><strong>エンゲージメント</strong><br>満足度・推奨度の変化</div>
+                        </div>
+                    </div>
+
+                    <h3>6-3. 経営会議で承認を得るためのレポーティング・フレームワーク</h3>
+                    <div class="info-card">
+                        <h4>🎯 4段階プレゼンテーション・フレームワーク</h4>
+                        <ol>
+                            <li><strong>現状の提示（As-Is）:</strong> 現在の損失額を明示して問題の大きさを共有</li>
+                            <li><strong>解決策の提案（To-Be）:</strong> 具体的なアクションと投資額を提示</li>
+                            <li><strong>期待されるリターンの提示（ROI）:</strong> 具体的な投資回収期間を明示</li>
+                            <li><strong>副次的効果の強調:</strong> ESG評価向上などの定性的メリットも付加</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="chapter7" class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">第7章</div>
+                        <div class="chapter-title">最新動向と未来展望</div>
+                    </div>
+
+                    <h3>7-1. メンタルヘルス・テクノロジー（ヘルステック）の活用</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">🤖</span>
+                            <div class="stat-label"><strong>AI予兆検知</strong><br>行動データ分析</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">⌚</span>
+                            <div class="stat-label"><strong>ウェアラブル連携</strong><br>生体データ活用</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">📱</span>
+                            <div class="stat-label"><strong>デジタルヘルス</strong><br>アプリ・プラットフォーム</div>
+                        </div>
+                    </div>
+
+                    <h3>7-2. リモートワーク環境下における新たな課題と対策</h3>
+                    <div class="warning-card">
+                        <h4>⚠️ 新たなメンタルヘルス課題</h4>
+                        <ul>
+                            <li><strong>コミュニケーションの希薄化:</strong> 雑談機会の減少、孤独感・孤立感</li>
+                            <li><strong>マネジメントの困難化:</strong> 部下の変化への気づきにくさ</li>
+                            <li><strong>オン・オフの境界の曖昧化:</strong> 長時間労働への傾向</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>🛠️ 対策のポイント</h4>
+                        <ul>
+                            <li><strong>意図的なコミュニケーション機会の創出:</strong> バーチャル雑談タイム、オンライン1on1</li>
+                            <li><strong>タスクベース・マネジメントへの移行:</strong> 成果物での評価文化</li>
+                            <li><strong>リモート環境整備の支援:</strong> 快適な業務環境への費用補助</li>
+                        </ul>
+                    </div>
+
+                    <h3>7-3. ウェルビーイング経営への進化</h3>
+                    <div class="highlight-box">
+                        <p><strong>🚀 未来の方向性:</strong> 今後の潮流は、メンタルヘルス不調を予防する「ゼロマイナス」のアプローチから、従業員一人ひとりが身体的、精神的、社会的に良好な状態にある<strong>「ウェルビーイング（Well-being）」</strong>の実現を目指す、より包括的でポジティブなアプローチへと進化していく。</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">🎯</span>
+                            <div class="stat-label"><strong>やりがい</strong><br>仕事への意味と目的</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">💪</span>
+                            <div class="stat-label"><strong>強みの活用</strong><br>個性と能力の最大化</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">🌱</span>
+                            <div class="stat-label"><strong>成長機会</strong><br>キャリア自律の支援</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section fade-in-up">
+                    <div class="chapter-header">
+                        <div class="chapter-number">🎯</div>
+                        <div class="chapter-title">おわりに</div>
+                    </div>
+
+                    <p>本レポートでは、メンタルヘルスマネジメントを、断片的な施策の集合体ではなく、企業の持続的成長を支える経営戦略の中核として捉え、その理論的背景から具体的な実践手法、未来展望までを多角的に論じてきた。</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🔑 最も重要なポイント:</strong> 最も効果的なメンタルヘルス対策とは、特別な「制度」や「プログラム」以上に、日々の職場における健全な人間関係と、互いへの敬意に基づいたコミュニケーションである、という事実である。</p>
+                    </div>
+
+                    <p>経営層が従業員を信頼し、管理職が部下の声に耳を傾け、同僚同士が互いを支え合う。そうした当たり前のことが当たり前に実践される組織文化こそが、あらゆる制度を血の通ったものにし、従業員の心の健康を守る最も強固な土台となる。</p>
+
+                    <div class="info-card">
+                        <p><strong>🛣️ 終わりのない旅:</strong> メンタルヘルスマネジメントに、これで終わりという完成形はない。それは、組織と共に学び、変化し続ける、終わりのない旅である。本ガイドが、その長く、しかし実り多き旅路において、確かな一歩を踏み出すための地図となることを心から願っている。</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // プログレスバーの更新
+        function updateProgressBar() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // トップに戻るボタンの表示制御
+        function toggleBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // セクションにスクロール
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // トップにスクロール
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // イベントリスナーの設定
+        window.addEventListener('scroll', function() {
+            updateProgressBar();
+            toggleBackToTop();
+        });
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            
+            // フェードインアニメーションの遅延実行
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.animationDelay = (index * 0.1) + 's';
+                }, 100);
+            });
+        });
+
+        // インターセクションオブザーバーでアニメーション発火
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
